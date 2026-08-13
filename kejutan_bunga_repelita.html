@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kejutan Bunga untuk Repelita 🌷</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:radial-gradient(circle at 50% 20%,#3b1764 0,#160d2d 45%,#070510 100%);
+  color:white;
+}
+canvas{position:fixed;inset:0;z-index:0}
+.wrap{position:relative;z-index:2;height:100%;display:grid;place-items:center;padding:20px}
+.card{
+  width:min(92vw,560px); text-align:center; padding:32px 24px 28px;
+  border:1px solid rgba(255,255,255,.18); border-radius:28px;
+  background:rgba(20,10,38,.58); backdrop-filter:blur(16px);
+  box-shadow:0 20px 70px rgba(0,0,0,.45), inset 0 1px rgba(255,255,255,.12);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-8px)}}
+.badge{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.75}
+h1{font-family:Georgia,serif;font-size:clamp(38px,11vw,68px);margin:10px 0 4px;
+  background:linear-gradient(90deg,#ffd1e6,#fff,#f7a7ff);-webkit-background-clip:text;color:transparent}
+.sub{opacity:.8;font-size:15px;margin-bottom:20px}
+.flower{font-size:90px;filter:drop-shadow(0 0 18px #ff80bd);animation:bloom 2.2s ease-in-out infinite}
+@keyframes bloom{0%,100%{transform:scale(.92) rotate(-3deg)}50%{transform:scale(1.05) rotate(3deg)}}
+.message{line-height:1.7;color:#f8eaf7;min-height:76px}
+button{
+  margin-top:22px;border:0;border-radius:999px;padding:14px 24px;
+  font-weight:700;font-size:15px;color:#30102f;cursor:pointer;
+  background:linear-gradient(135deg,#ffd1e5,#ff8ec5,#dca8ff);
+  box-shadow:0 8px 25px rgba(255,120,190,.28);
+}
+button:active{transform:scale(.97)}
+.secret{max-height:0;overflow:hidden;transition:max-height .8s ease,margin .8s ease}
+.secret.show{max-height:180px;margin-top:18px}
+.secret p{padding:16px;border-radius:18px;background:rgba(255,255,255,.07);font-size:15px;line-height:1.7}
+.from{margin:12px auto 4px;font-family:Georgia,serif;font-size:18px;letter-spacing:.4px;background:linear-gradient(90deg,#fff1f8,#ffacd3,#e2c1ff,#fff1f8);-webkit-background-clip:text;color:transparent;background-size:250% auto;animation:shineText 4s linear infinite;text-shadow:0 0 12px rgba(50,160,255,.45),0 0 28px rgba(30,120,255,.22)}.from span{display:inline-block;color:#62baff;-webkit-text-fill-color:#62baff;animation:heartPulse 1.4s ease-in-out infinite}@keyframes shineText{to{background-position:250% center}}@keyframes heartPulse{50%{transform:scale(1.3);filter:drop-shadow(0 0 8px #45aaff)}}.small{margin-top:18px;font-size:12px;opacity:.45}
+.petal{position:fixed;top:-30px;z-index:1;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:.05}}
+.cursorGlow{position:fixed;width:280px;height:280px;border-radius:50%;
+pointer-events:none;z-index:1;transform:translate(-50%,-50%);
+background:radial-gradient(circle,rgba(255,120,190,.12),transparent 68%);
+mix-blend-mode:screen}
+.ripple{position:fixed;width:12px;height:12px;border:1px solid rgba(255,190,225,.75);
+border-radius:50%;pointer-events:none;z-index:5;transform:translate(-50%,-50%);
+animation:ripple .9s ease-out forwards}
+@keyframes ripple{to{width:180px;height:180px;opacity:0}}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;
+background:linear-gradient(120deg,transparent,#ff9bce,transparent,#c8a2ff,transparent);
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;mask-composite:exclude;opacity:.65;
+animation:borderFlow 5s linear infinite;pointer-events:none}
+.card{position:relative;overflow:hidden}
+@keyframes borderFlow{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="cursorGlow" id="glow"></div>
+<div class="wrap">
+  <main class="card">
+    <div class="badge">sebuah kejutan kecil untuk</div>
+    <h1>Repelita</h1>
+    <div class="sub">🌸 karena kamu pantas mendapatkan bunga hari ini 🌸</div>
+<div class="from">Untuk Repelita <span>♡</span> dari Billbill</div>
+    <div class="flower">🌷</div>
+    <div class="message">
+      Ada bunga yang indah,<br>
+      tapi ada juga seseorang yang membuat hari terasa lebih indah.
+    </div>
+    <button onclick="reveal()">💐 Buka Kejutannya</button>
+    <div id="secret" class="secret">
+      <p>
+        Untuk Repelita 🌷<br>
+        Semoga hari ini dipenuhi hal-hal kecil yang bikin kamu tersenyum.
+        Jangan lupa, kamu berharga dan layak mendapatkan banyak kebahagiaan. ✨
+      </p>
+    </div>
+    <div class="small">made with a little bit of magic ✨</div>
+  </main>
+</div>
+
+<script>
+const c=document.getElementById('stars'),x=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight} resize(); addEventListener('resize',resize);
+let stars=Array.from({length:110},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+.2,a:Math.random()}));
+function draw(){
+  x.clearRect(0,0,c.width,c.height);
+  stars.forEach(s=>{s.a+=.01; x.globalAlpha=.25+.35*Math.sin(s.a);x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fillStyle='#fff';x.fill()});
+  requestAnimationFrame(draw);
+} draw();
+
+function petal(){
+  const p=document.createElement('div'); p.className='petal';
+  p.textContent=['🌸','🌷','💮','✿'][Math.floor(Math.random()*4)];
+  p.style.left=Math.random()*100+'vw';
+  p.style.fontSize=(14+Math.random()*18)+'px';
+  p.style.setProperty('--x',(Math.random()*180-90)+'px');
+  p.style.animationDuration=(5+Math.random()*6)+'s';
+  document.body.appendChild(p); setTimeout(()=>p.remove(),12000);
+}
+setInterval(petal,650);
+
+const glow=document.getElementById('glow');
+addEventListener('pointermove',e=>{
+  glow.style.left=e.clientX+'px';
+  glow.style.top=e.clientY+'px';
+});
+addEventListener('pointerdown',e=>{
+  const r=document.createElement('div');
+  r.className='ripple'; r.style.left=e.clientX+'px'; r.style.top=e.clientY+'px';
+  document.body.appendChild(r); setTimeout(()=>r.remove(),950);
+});
+
+function reveal(){
+  document.getElementById('secret').classList.toggle('show');
+  for(let i=0;i<18;i++) setTimeout(petal,i*70);
+}
+</script>
+</body>
+</html>
