@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dari Billbill untuk Repelita</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:radial-gradient(circle at top,#182b62 0,#080d20 45%,#03050d 100%);
+  color:#fff;overflow-x:hidden;min-height:100vh
+}
+canvas{position:fixed;inset:0;z-index:-1}
+.nav{
+ position:fixed;top:0;left:0;right:0;z-index:10;
+ display:flex;justify-content:center;gap:10px;padding:14px;
+ background:rgba(3,5,13,.58);backdrop-filter:blur(14px);
+ border-bottom:1px solid rgba(120,170,255,.18)
+}
+.nav a{
+ color:#cfe0ff;text-decoration:none;padding:9px 13px;border-radius:999px;
+ font-size:13px;transition:.3s
+}
+.nav a:hover{background:#246bff;color:white;box-shadow:0 0 22px #246bff}
+section{min-height:100vh;padding:105px 20px 70px;display:flex;align-items:center;justify-content:center}
+.card{
+ width:min(900px,100%);padding:45px 28px;text-align:center;border-radius:30px;
+ background:rgba(255,255,255,.07);border:1px solid rgba(155,190,255,.2);
+ box-shadow:0 25px 80px rgba(0,0,0,.35);backdrop-filter:blur(18px)
+}
+.badge{display:inline-block;padding:8px 15px;border:1px solid #4b8cff;border-radius:50px;color:#a9c7ff;font-size:13px;margin-bottom:20px}
+h1{
+ font-size:clamp(42px,9vw,82px);line-height:.95;margin-bottom:20px;
+ background:linear-gradient(90deg,#fff,#71a7ff,#d5e5ff);-webkit-background-clip:text;color:transparent
+}
+h2{font-size:clamp(30px,6vw,52px);margin-bottom:18px;color:#d9e7ff}
+p{font-size:18px;line-height:1.8;color:#c5d2e9;max-width:700px;margin:0 auto 20px}
+.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+.btn{
+ display:inline-block;text-decoration:none;color:white;padding:13px 20px;border-radius:14px;
+ background:linear-gradient(135deg,#2374ff,#5b38ff);font-weight:bold;
+ box-shadow:0 8px 30px rgba(45,105,255,.28);transition:.3s
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,105,255,.5)}
+.letter{text-align:left;max-width:700px;margin:auto}
+.letter p{margin-bottom:16px}
+.highlight{color:#75a9ff;font-weight:bold}
+.timeline{display:grid;gap:15px;max-width:700px;margin:25px auto}
+.item{
+ padding:20px;border-left:3px solid #4285ff;background:rgba(55,110,220,.08);
+ border-radius:0 16px 16px 0;text-align:left
+}
+.item b{color:#8ab8ff}
+.quote{font-size:25px!important;font-style:italic;color:#e9f1ff!important}
+footer{text-align:center;padding:30px;color:#7585a4;font-size:13px}
+#heart{font-size:65px;animation:pulse 1.4s infinite;display:block;margin:20px}
+@keyframes pulse{50%{transform:scale(1.18);filter:drop-shadow(0 0 20px #4b8cff)}}
+.reveal{opacity:0;transform:translateY(25px);transition:1s}.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<nav class="nav">
+ <a href="#home">Home</a>
+ <a href="#maaf">Pesanku</a>
+ <a href="#agustus">Agustus</a>
+ <a href="#janji">Janji</a>
+ <a href="#akhir">Terakhir</a>
+</nav>
+
+<section id="home">
+ <div class="card reveal">
+   <span class="badge">✦ Sebuah pesan kecil dari hati</span>
+   <h1>Dari Billbill<br>untuk Repelita</h1>
+   <p>Ada sesuatu yang ingin aku sampaikan dengan cara yang sedikit berbeda.</p>
+   <div class="btns">
+     <a class="btn" href="#maaf">Buka Pesanku 💙</a>
+     <a class="btn" href="#agustus">Kenapa Aku Sibuk?</a>
+   </div>
+ </div>
+</section>
+
+<section id="maaf">
+ <div class="card reveal">
+   <h2>Maaf, Repelita.</h2>
+   <span id="heart">💙</span>
+   <div class="letter">
+    <p>Aku minta maaf karena akhir-akhir ini aku belum bisa memberikan waktu sebanyak yang seharusnya untuk menemani kamu.</p>
+    <p>Bukan karena aku tidak peduli. <span class="highlight">Bukan juga karena kamu tidak penting.</span> Justru kamu tetap menjadi seseorang yang sangat berarti buatku.</p>
+    <p>Bulan Agustus ini kegiatanku sedang cukup banyak, dan terkadang aku harus membagi waktu antara berbagai tanggung jawab dan hal-hal yang sedang aku jalani.</p>
+   </div>
+   <div class="btns"><a class="btn" href="#agustus">Lanjut →</a></div>
+ </div>
+</section>
+
+<section id="agustus">
+ <div class="card reveal">
+   <h2>Tentang Agustus</h2>
+   <p>Kalau belakangan aku terlihat lebih sibuk, ini bukan berarti aku sengaja menjauh.</p>
+   <div class="timeline">
+    <div class="item"><b>📚 Banyak kegiatan</b><br>Ada beberapa hal yang harus aku selesaikan dan jalani.</div>
+    <div class="item"><b>⏳ Waktu terbagi</b><br>Kadang aku harus memilih mana yang perlu diselesaikan lebih dulu.</div>
+    <div class="item"><b>💙 Tetap ingat kamu</b><br>Walaupun tidak selalu bisa hadir, bukan berarti aku melupakan kamu.</div>
+   </div>
+   <div class="btns"><a class="btn" href="#janji">Ada yang Mau Kujanjikan →</a></div>
+ </div>
+</section>
+
+<section id="janji">
+ <div class="card reveal">
+   <h2>Aku Tidak Mau Kamu Merasa Sendirian</h2>
+   <p class="quote">“Kesibukan mungkin membuat waktuku terbatas, tapi tidak seharusnya membuat kamu merasa tidak dihargai.”</p>
+   <p>Aku akan berusaha lebih baik dalam mengatur waktu. Aku juga akan berusaha memberi kabar ketika sedang sibuk, supaya kamu tidak bertanya-tanya atau merasa diabaikan.</p>
+   <p>Aku tidak menjanjikan bisa selalu ada setiap saat, tetapi aku bisa berjanji untuk <span class="highlight">tetap berusaha.</span></p>
+   <div class="btns"><a class="btn" href="#akhir">Pesan Terakhir →</a></div>
+ </div>
+</section>
+
+<section id="akhir">
+ <div class="card reveal">
+   <span class="badge">Untuk kamu, Repelita</span>
+   <h2>Terima kasih sudah mengerti. 💙</h2>
+   <p>Maaf kalau Agustus ini aku belum bisa menjadi Billbill yang punya banyak waktu untukmu.</p>
+   <p>Tapi semoga kamu tahu: <span class="highlight">kamu tetap berarti.</span></p>
+   <p>Semoga setelah membaca ini, kamu bisa sedikit mengerti kenapa aku akhir-akhir ini banyak kegiatan.</p>
+   <p style="margin-top:30px;font-size:22px;color:white"><b>— Billbill</b></p>
+   <div class="btns">
+    <a class="btn" href="#home">↺ Baca Lagi</a>
+   </div>
+ </div>
+</section>
+
+<footer>Dibuat dengan tulus untuk Repelita • Agustus 2026</footer>
+
+<script>
+const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');
+let w,h,stars=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;stars=Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.7+.2,s:Math.random()*.35+.08}))}
+function draw(){
+ ctx.clearRect(0,0,w,h);ctx.fillStyle="rgba(255,255,255,.75)";
+ stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();s.y-=s.s;if(s.y<0)s.y=h})
+ requestAnimationFrame(draw)
+}
+resize();addEventListener('resize',resize);draw();
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+</script>
+</body>
+</html>
